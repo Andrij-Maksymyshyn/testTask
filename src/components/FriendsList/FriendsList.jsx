@@ -1,14 +1,15 @@
 import { Avatar } from '@mui/material';
 import { IconContact, Ul, Box, Div1, Div2, H3, Li, Span } from './FriendsList.styled';
+import PropTypes from 'prop-types';
 
 
 
-export const FriendsList = ({ list, onSelect }) => {       
+export const FriendsList = ({ visibleContacts, onSelect }) => {       
    
     return (        
         <>            
         <Ul>
-            {list.map((contact) => (
+            {visibleContacts.map((contact) => (
                 <Li key={contact.id} onClick={() => onSelect(contact)}>
                     <Box>
                     <Div1>
@@ -30,6 +31,11 @@ export const FriendsList = ({ list, onSelect }) => {
             </Ul>            
         </>
     )    
+};
+
+FriendsList.propTypes = {
+  visibleContacts: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  onSelect: PropTypes.func.isRequired,
 };
 
 
