@@ -32,9 +32,11 @@ margin-bottom: 0;
 `;
 
 export const Li = styled.li`
+cursor: pointer;
+
 &:not(:last-child) {
     margin-bottom: 15px;
-}     
+    }     
 `;
 
 export const Span = styled.span`
