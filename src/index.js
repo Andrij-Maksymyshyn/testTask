@@ -1,14 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from 'components/App/App.jsx';
-import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter basename="/testTask/">
-      <App />
-    </BrowserRouter>    
+       <App />    
   </React.StrictMode>,
   document.getElementById('root')
 );
