@@ -10,6 +10,7 @@ export const IconContact = styled(ImUser)`
 
 export const Ul = styled.ul`
     list-style: none;
+    margin-bottom: 0;
 `;
 
 export const Box = styled.div`

@@ -91,5 +91,17 @@ export const JokeTitleDate = styled.p`
     font-size: 12px;
 `;
 
+export const AnswerP = styled.p`
+    padding: 10px 15px;
+    background-color: darkslategray;
+    border-radius: 7px;
+    color: aliceblue;
+`;
+
+export const CurrentAnswer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 
 

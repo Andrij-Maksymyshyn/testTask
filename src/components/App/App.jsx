@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Filter } from '../Filter/Filter';
 import { FriendsList } from '../FriendsList/FriendsList';
+import { Searchbar } from '../AnswerForm/AnswerForm';
 import { fetchJoke } from 'services/fetchApi';
 
-// import contactsList from '../../data/dataContacts.json';
-import { Container, MainBox, SecondBlock, Header, H2, NeedContactBox, IconCurrentContact, CurrentContact, AvatarDiv, TitleCurrent, DateCurrent, JokeTitle, JokeTitleDate } from './App.styled';
+
+import { Container, MainBox, SecondBlock, Header, H2, NeedContactBox, IconCurrentContact, CurrentContact, AvatarDiv, TitleCurrent, DateCurrent, JokeTitle, JokeTitleDate, AnswerP, CurrentAnswer } from './App.styled';
 import { Avatar } from '@mui/material';
 
 
@@ -34,28 +35,15 @@ export const App = () => {
   "message": "Accusamus quisquam corrupti quia officia porro.",
   "id": "4"
  },
- {
-  "createdAt": "2020-04-29 13:52 AM",
-  "name": "Mildred Wolf",
-  "message": "Reiciendis similique autem velit corrupti aspernatur.",
-  "id": "5"
- },
- {
-  "createdAt": "2020-04-30 15:42 AM",
-  "name": "Malcolm Bayer",
-  "message": "Aut natus quia.",
-  "id": "6"
- },
- {
-  "createdAt": "2020-04-21 18:35 PM",
-  "name": "Doreen Bradtke",
-  "message": "Quaerat nisi sapiente.",
-  "id": "7"
- }
   ]);
+
   const [selectedContact, setSelectedContact] = useState(null);
+  const [answerToChuck, setAnswerToChuck] = useState(null);
   const [filter, setFilter] = useState('');
   const [joke, setJoke] = useState('');
+  const [doubleJoke, setDoubleJoke] = useState('');
+  const date = new Date();
+  const currentDate = date.toLocaleString();
   
 
   const changeFilter = e => {
@@ -72,6 +60,10 @@ export const App = () => {
 
   useEffect(() => {
     if (selectedContact) {
+      setAnswerToChuck(null);
+      setJoke(null);
+      setDoubleJoke(null);
+
       fetchJoke()
         .then(data => {
          
@@ -82,12 +74,30 @@ export const App = () => {
                value,
                created_at,
              }); 
-            }, 3000)
-
-                   
+            }, 3000)                   
       })
     }
   }, [selectedContact]);
+
+
+  useEffect(() => {
+    if (answerToChuck) {           
+
+      fetchJoke()
+        .then(data => {
+         
+        const { data: { value, created_at } } = data;
+
+           setTimeout(() => {
+             setDoubleJoke({
+               value,
+               created_at,
+             }); 
+            }, 3000)                   
+      })
+    }
+  }, [answerToChuck]);
+
 
   
 
@@ -141,6 +151,21 @@ export const App = () => {
 
             {joke && <JokeTitle>{joke.value}</JokeTitle>}
             {joke && <JokeTitleDate>{joke.created_at.slice(0, 16)} AM</JokeTitleDate>}
+
+            <CurrentAnswer>
+              {answerToChuck &&
+                <Avatar style={{ marginRight: '4px', backgroundColor: 'green' }}>
+                <IconCurrentContact/>               
+              </Avatar>}
+              {answerToChuck && <AnswerP>{answerToChuck}</AnswerP>}                           
+            </CurrentAnswer>
+            {answerToChuck && <DateCurrent>{currentDate}</DateCurrent>}
+
+            {doubleJoke && <JokeTitle>{doubleJoke.value}</JokeTitle>}
+            {doubleJoke && <JokeTitleDate>{doubleJoke.created_at.slice(0, 16)} AM</JokeTitleDate>}
+            {doubleJoke && <h1>Sorry, Chuck went sleep((( Chat is finished...</h1>}
+
+            
             
       </NeedContactBox>}
         </SecondBlock>      
@@ -151,7 +176,8 @@ export const App = () => {
 
       <H2>Chats</H2>      
       <Container>
-       <FriendsList visibleContacts={getVisibleContacts()} onSelect={setSelectedContact} />
+        <FriendsList visibleContacts={getVisibleContacts()} onSelect={setSelectedContact} />
+        <Searchbar propSubmit={setAnswerToChuck}/>
         
     </Container>
     </>

@@ -1,0 +1,20 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Button } from './IconButton.styled';
+
+export const IconButton = ({ children, onClick, ...allyProps }) => (
+  <Button type="submit" onclick={onClick} {...allyProps}>
+    {children}
+  </Button>
+);
+
+IconButton.defaultProps = {
+  onclick: () => null,
+  children: null,
+};
+
+IconButton.propTypes = {
+  onClick: PropTypes.func,
+  children: PropTypes.node,
+  'aria-label': PropTypes.string.isRequired,
+};
