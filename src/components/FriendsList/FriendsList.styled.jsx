@@ -24,6 +24,7 @@ export const Div1 = styled.div`
 
 export const Div2 = styled.div`
     margin-left: auto;
+    font-size: 12px;
 `;
 
 export const H3 = styled.h3`

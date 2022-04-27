@@ -11,7 +11,7 @@ export const Filter = ({ value, onChange }) => (
             autoComplete="off"
             autoFocus
             placeholder="Search or start new chat"
-            value={value}
+            value={value.trim()}
             onChange={onChange}
           />
     </FilterDiv>

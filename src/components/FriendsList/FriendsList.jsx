@@ -22,7 +22,7 @@ export const FriendsList = ({ visibleContacts, onSelect }) => {
                             </div>
                     </Div1>
                     <Div2>
-                            <Span>{contact.createdAt.slice(0, 10)}</Span>
+                            <Span>{contact.createdAt.slice(0, 19)}</Span>
                     </Div2>
                     </Box>
                     <hr style={{color: 'cadetblue'}}/>

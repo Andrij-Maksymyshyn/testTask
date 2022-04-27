@@ -4,11 +4,12 @@ export const InputFil = styled.input`
   display: inline-block;
   width: 100%;
   font: inherit;
-  font-size: 20px;
+  font-size: 18px;
   border: none;
   outline: none;
   padding-left: 4px;
   padding-right: 4px;
+  padding-bottom: 5px;
 
   &::placeholder {
     font: inherit;

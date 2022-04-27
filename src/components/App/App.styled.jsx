@@ -4,6 +4,7 @@ import { ImUser } from "react-icons/im";
 export const MainBox = styled.div`
 display: flex;
 align-items: baseline;
+padding-left: 25px;
 `;
 
 
@@ -69,6 +70,25 @@ export const DateCurrent = styled.p`
 color: cadetblue;
 margin: 0;
 padding-left: 45px;
+font-size: 12px;
+`;
+
+export const JokeTitle = styled.p`
+    width: 70%;
+    margin-left: auto;
+    padding: 10px 0;
+    text-align: center;
+    background-color: beige;
+    border-radius: 7px;
+    margin-right: 20px;
+    margin-top: 30px;
+`;
+
+export const JokeTitleDate = styled.p`
+    color: cadetblue;
+    margin-left: auto;
+    width: 45%;
+    font-size: 12px;
 `;
 
 
